@@ -1,15 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {ScrollView, View, Text, TouchableOpacity} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
-import {DrawerItems} from 'react-navigation-drawer';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const DrawerComponent = ({items, navigation: {navigate, closeDrawer}}) => {
   return (
     <ScrollView>
-      <SafeAreaView
-        style={{flex: 1}}
-        forceInset={{top: 'always', horizontal: 'never'}}>
+      <SafeAreaView style={{flex: 1}} forceInset={{top: 'always', horizontal: 'never'}}>
         {items.map(item => {
           return (
             <TouchableOpacity
@@ -25,9 +23,7 @@ const DrawerComponent = ({items, navigation: {navigate, closeDrawer}}) => {
                 }}>
                 {/* <Icon name={item.params.iconName} size={24} /> */}
                 <Text style={{marginHorizontal: 10}}>
-                  {item.params
-                    ? item.params.name || item.routeName
-                    : item.routeName}
+                  {item.params ? item.params.name || item.routeName : item.routeName}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -36,6 +32,18 @@ const DrawerComponent = ({items, navigation: {navigate, closeDrawer}}) => {
       </SafeAreaView>
     </ScrollView>
   );
+};
+
+DrawerComponent.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    closeDrawer: PropTypes.func.isRequired,
+  }).isRequired,
+  items: PropTypes.shape([
+    {
+      routeName: PropTypes.string.isRequired,
+    },
+  ]).isRequired,
 };
 
 export default DrawerComponent;

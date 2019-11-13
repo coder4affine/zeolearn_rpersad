@@ -1,24 +1,23 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {createDrawerNavigator} from 'react-navigation-drawer';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
 import HomeScreen from './screens/homeScreen/HomeScreen';
 import LoginScreen from './screens/loginScreen/LoginScreen';
 import TestScreen from './screens/testScreen/TestScreen';
 import ModalScreen from './screens/modalScreen/ModalScreen';
 import DetailsScreen from './screens/detailsScreen/DetailsScreen';
 import DrawerComponent from './components/drawerComponent/DrawerComponent';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
-import {createDrawerNavigator} from 'react-navigation-drawer';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 const LoginStack = createStackNavigator(
   {
     Login: LoginScreen,
   },
   {
-    defaultNavigationOptions: ({navigation}) => ({
+    defaultNavigationOptions: () => ({
       header: null,
     }),
   },
@@ -70,7 +69,7 @@ const TabNavigation = createBottomTabNavigator(
   {
     lazy: true,
     defaultNavigationOptions: ({navigation}) => ({
-      tabBarIcon: ({focused, horizontal, tintColor}) => {
+      tabBarIcon: ({tintColor}) => {
         const {routeName} = navigation.state;
         let iconName = '';
         switch (routeName) {
