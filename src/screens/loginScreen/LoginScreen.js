@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
+import SafeAreaView from 'react-native-safe-area-view';
 
 const LoginScreen = ({navigation: {getParam, navigate}}) => {
-  console.warn('test', getParam('test', 'no data availble'));
   return (
-    <View>
+    <SafeAreaView>
       <Text>Hello from Login Page</Text>
-      <Button title="Home" onPress={() => navigate('Home')} />
-    </View>
+      <Button title="Home" onPress={() => navigate('Dashboard')} />
+    </SafeAreaView>
   );
 };
 
