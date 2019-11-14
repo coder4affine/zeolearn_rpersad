@@ -10,6 +10,7 @@ import LoginScreen from './screens/loginScreen/LoginScreen';
 import TestScreen from './screens/testScreen/TestScreen';
 import ModalScreen from './screens/modalScreen/ModalScreen';
 import DetailsScreen from './screens/detailsScreen/DetailsScreen';
+import PermissionPage from './screens/permissionPage/PermissionPage';
 import DrawerComponent from './components/drawerComponent/DrawerComponent';
 
 const LoginStack = createStackNavigator(
@@ -122,6 +123,7 @@ const AppNavigation = createDrawerNavigator(
 );
 
 const App = createSwitchNavigator({
+  Permission: {screen: PermissionPage},
   Login: {screen: LoginStack},
   Dashboard: {screen: AppNavigation},
 });
